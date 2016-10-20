@@ -19,6 +19,10 @@ b="""all
 inner_compare(a, b)
 
 **Output：**
+![][timestamplog]
+
+
+
 [timestamplog]: /images/timestamplog.png
 
 

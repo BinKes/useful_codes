@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 import difflib
-from log.timestamp_print_decorator.timestamp_log import timestamp_log
+from timestamp_log import timestamp_log
 
 @timestamp_log
 def inner_compare(str1, str2):

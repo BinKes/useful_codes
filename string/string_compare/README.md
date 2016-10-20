@@ -20,7 +20,7 @@ b="""all
 
 inner_compare(a, b)
 
-**Output：**
+**Output：**  
 ![][timestamplog]
 
 两组字符串中的不同字母都被标示出来。

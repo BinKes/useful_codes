@@ -1,6 +1,8 @@
 # string compare
 
-*compare two strings and show the differences
+##compare two strings and show the differences
+
+##code：
 
 a="""all\
     dsasd\

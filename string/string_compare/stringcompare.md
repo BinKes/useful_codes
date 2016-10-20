@@ -23,6 +23,6 @@ inner_compare(a, b)
 
 
 
-[timestamplog]: /images/timestamplog.png
+[timestamplog]: ../images/timestamplog.png
 
 

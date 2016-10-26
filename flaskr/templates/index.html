@@ -1,0 +1,13 @@
+<!doctype html>
+<title>It is Flask</title>
+<h1>Hello, Flask!</h1>
+{% if profiles %}
+  <ul class=entries>
+  {% for profile in profiles %}
+    <li><h2>{{ profile.userInfo['gender'] }}</h2>
+    <li><h2>{{ profile.userInfo['gender'] }}</h2>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  </ul>
+  {% endfor %}
+{% endif %}

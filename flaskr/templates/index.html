@@ -1,13 +1,16 @@
 <!doctype html>
 <title>It is Flask</title>
 <h1>Hello, Flask!</h1>
-{% if profiles %}
-  <ul class=entries>
-  {% for profile in profiles %}
-    <li><h2>{{ profile.userInfo['gender'] }}</h2>
-    <li><h2>{{ profile.userInfo['gender'] }}</h2>
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <ul class=entries>
+    {% for profile in profiles %}
+      <li><h2>{{ profile.userInfo['gender'] }}</h2>
+      <li><h2>{{ profile.userInfo['age'] }}</h2>
+    </ul>
+    {% endfor %}
   {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-  </ul>
-  {% endfor %}
-{% endif %}
+      <li><em>Unbelievable.  No userInfo login so far</em>
+  {% endif %}
+{% endblock %}

@@ -2,7 +2,7 @@ from flask import Flask
 
 from flask_sqlalchemy import SQLAlchemy
 #from ..models import conn
-conn = ''
+conn = 'mssql+pymssql://sa:123456@172.171.172.172/database'
 #print(conn)
 # create our little application :)
 app = Flask(__name__)

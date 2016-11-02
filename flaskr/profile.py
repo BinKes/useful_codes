@@ -2,18 +2,18 @@
 from datetime import datetime
 #from . import Base
 from db import db
-#db.create_all(bind=['T_Profile'])
+(Column, Table, String, Integer, DateTime)=(db.Column, db.Table, db.String, db.Integer, db.DateTime)
 
 class Profile(db.Model):
 
   #__bind_key__ = 'T_Profile'
   __tablename__ = 'T_Profile'
 
-  profileId = db.Column(db.Integer, primary_key=True)
-  userId = db.Column(db.Integer)
-  name = db.Column(db.String)
-  gender = db.Column(db.Integer)
-  birthday = db.Column(db.DateTime)
+  profileId = Column(Integer, primary_key=True)
+  userId = Column(Integer)
+  name = Column(String)
+  gender = Column(Integer)
+  birthday = Column(DateTime)
 
   @property
   def userInfo(self):

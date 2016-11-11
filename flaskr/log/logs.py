@@ -3,7 +3,7 @@ Flask 使用 Python 内置的日志系统，它实际上可以发送错误邮件
 配置 Flask 日志向你发送异常邮件方法:
 '''
 
-ADMINS = ['yourname@example.com']
+ADMINS = ['hui.zou@jiukangyun.com'] #your email
 if not app.debug:
     import logging
     from logging.handlers import SMTPHandler

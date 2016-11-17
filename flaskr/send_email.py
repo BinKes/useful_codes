@@ -25,7 +25,7 @@ MIME header：可以帮助邮件程序以合适的语言、格式来显示邮件
 def send_email(mail_msg, subtype):
     # 输入Email地址和口令:
     from_addr = 'hui.zou@jiukangyun.com'
-    password = ''
+    password = 'Jkom16099'
     # 输入收件人地址:
     to_addr = '289087901@qq.com'
 
@@ -48,9 +48,8 @@ def send_email(mail_msg, subtype):
 
 def send_email_with_attach():
     # 首先要创建MIMEMultipart()实例
-    '''
     from_addr = 'hui.zou@jiukangyun.com'
-    password = ''
+    password = 'Jkom16099'
     # 输入收件人地址:
     to_addr = '289087901@qq.com'
 
@@ -66,7 +65,7 @@ def send_email_with_attach():
     msgImage = MIMEImage(fp.read())
     fp.close()
 
-    msgRoot = MIMEMultipart('alternative')
+    #msgRoot = MIMEMultipart('alternative')
     # 定义图片 ID，在 HTML 文本中引用
     msgImage.add_header('Content-ID', '<image1>')
     
@@ -76,12 +75,13 @@ def send_email_with_attach():
                 <p>图片演示：</p>
                 <p><img src="cid:image1"></p>
                 """
-    try:
+    '''try:
         msgRoot.attach(MIMEText(mail_msg, 'html', 'utf-8'))
     except Exception as e:
-        print(e)
+        print(e)'''
+    msg.attach(MIMEText(mail_msg, 'html', 'utf-8'))
     msg.attach(msgImage)
-    msg.attach(msgRoot)
+    #msg.attach(msgRoot)
     # 开始构造附件
     att_file1 = MIMEText(open('requirements.txt', 'rb').read(), 'base64', 'utf-8')
     att_file1['Content-Type'] = 'application/octet-stream'
@@ -109,51 +109,7 @@ def send_email_with_attach():
         print("邮件发送成功")
     except smtplib.SMTPException as e:
         print("Error: 无法发送邮件")
-        print(e)'''
-    
-    sender = 'hui.zou@jiukangyun.com'
-    password = ''
-    receivers = ['289087901@qq.com']
-    smtp_server = 'smtp.exmail.qq.com'
-
-    msgRoot = MIMEMultipart('related')
-    msgRoot['From'] = Header("菜鸟教程", 'utf-8')
-    msgRoot['To'] =  Header("测试", 'utf-8')
-    subject = 'Python SMTP 邮件测试'
-    msgRoot['Subject'] = Header(subject, 'utf-8')
-
-    #msgAlternative = MIMEMultipart('alternative')
-    #msgRoot.attach(msgAlternative)
-    mail_msg = """
-    <p>Python 邮件发送测试...</p>
-    <p><a href="http://www.runoob.com">教程链接</a></p>
-    <p>图片演示：</p>
-    <p><img src="cid:image1"></p>
-    """
-    msgRoot.attach(MIMEText(mail_msg, 'html', 'utf-8'))
-
-    # 指定图片为当前目录
-    fp = None
-    try:
-        fp = open('jkom.png', 'rb')
-    except Exception as e:
         print(e)
-    msgImage = MIMEImage(fp.read())
-    fp.close()
-
-    # 定义图片 ID，在 HTML 文本中引用
-    msgImage.add_header('Content-ID', '<image1>')
-    msgRoot.attach(msgImage)
-
-    try:
-        server = smtplib.SMTP(smtp_server, 25) # SMTP协议默认端口是25
-        server.set_debuglevel(1)
-        server.login(sender, password)
-        server.sendmail(sender, receivers, msgRoot.as_string())
-        print ("邮件发送成功")
-        server.quit()
-    except smtplib.SMTPException:
-        print ("Error: 无法发送邮件")
 
 
 if __name__ == '__main__':

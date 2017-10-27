@@ -106,3 +106,43 @@ run_all_test_cases()
 
 end = datetime.datetime.now()
 print('run time:', (end-start).seconds/18)
+'''
+import requests
+from PIL import Image
+from io import BytesIO
+from urllib.request import urlopen
+import numpy as np
+
+img_url = 'https://hmp.blob.core.chinacloudapi.cn/precise-file-dev/400003578-photo-a7169cbb14dcde05d51033cdc950f72a3ad2f76c-img.jpg?st=2017-10-18T06%3A00%3A16Z&se=2018-10-19T06%3A00%3A16Z&sp=r&sv=2017-04-17&sr=b&sig=Ufkn0YjQ5M4912euGt6uG40vGn4glxNz7Bzt3zasFVk%3D'
+
+r = requests.get(img_url, stream=True, timeout=10)
+#img = Image.open(BytesIO(r.content))
+
+#print(img.__dict__)
+#_img = Image.open(urlopen(img_url))
+#print(_img.info)
+
+'''img = Image.open(r)
+print(img)'''
+import os, sys
+#print(img.size)
+# print(os.stat(r.content).st_size)
+
+#img1 = np.array((img), dtype='uint8')
+
+
+#print(img1.shape)
+
+import cv2
+
+
+img = np.array(bytearray(r.content), dtype='uint8') # size 等于图像体积大小
+large = cv2.imdecode(img, cv2.IMREAD_COLOR)
+gray = cv2.cvtColor(large, cv2.COLOR_BGR2GRAY)
+small = cv2.pyrDown(gray)
+print(img.size)
+print(large.shape)
+print(gray.shape)
+print(small.shape)
+print(1581477/1242/1242)
+'''
